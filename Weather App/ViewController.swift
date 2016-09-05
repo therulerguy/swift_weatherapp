@@ -8,11 +8,20 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
+  
+  @IBOutlet var cityEntered: UITextField!
+  
+  @IBAction func submit(_ sender: AnyObject) {
+  }
+  
+  
+  
+  
+  
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    // Do any additional setup after loading the view, typically from a nib.
   }
 
   override func didReceiveMemoryWarning() {
@@ -20,6 +29,19 @@ class ViewController: UIViewController {
     // Dispose of any resources that can be recreated.
   }
 
+  public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    
+    textField.resignFirstResponder()
+    
+    return true
+  }
+  
+  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    
+    view.self.endEditing(true)
+  }
+  
+  
 
 }
 
