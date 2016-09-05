@@ -19,6 +19,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="zgz-3I-7c8">
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
+                                </accessibility>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What's the Weather?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="fd1-yf-bsN">
                                 <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                 <nil key="textColor"/>
@@ -38,35 +43,52 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wWA-8Y-gH0">
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="Submit"/>
                                 <connections>
                                     <action selector="submit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nYw-rT-Sc9"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The weather forecast should be right here" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lbO-vg-pog">
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="JhO-pe-bMv" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="06j-nw-C4f"/>
                             <constraint firstItem="wWA-8Y-gH0" firstAttribute="top" secondItem="JhO-pe-bMv" secondAttribute="bottom" constant="16" id="1bY-1K-hAY"/>
+                            <constraint firstAttribute="trailing" secondItem="zgz-3I-7c8" secondAttribute="trailing" id="Cgh-VW-J2M"/>
+                            <constraint firstItem="zgz-3I-7c8" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="KnO-cL-1RA"/>
                             <constraint firstItem="fd1-yf-bsN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="19" id="O4U-0p-bSy"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="lbO-vg-pog" secondAttribute="trailing" constant="36" id="Ua2-wF-0Sr"/>
                             <constraint firstAttribute="trailingMargin" secondItem="fd1-yf-bsN" secondAttribute="trailing" constant="20" id="Uoq-7e-Vbk"/>
+                            <constraint firstItem="lbO-vg-pog" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="36" id="VLG-pS-thT"/>
                             <constraint firstItem="JhO-pe-bMv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="YBu-Wz-ilh"/>
                             <constraint firstAttribute="trailingMargin" secondItem="wWA-8Y-gH0" secondAttribute="trailing" constant="147" id="amL-CL-yKi"/>
                             <constraint firstItem="wWA-8Y-gH0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="147" id="cq4-6C-0rf"/>
+                            <constraint firstItem="zgz-3I-7c8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="eog-aV-WfC"/>
                             <constraint firstAttribute="trailingMargin" secondItem="cKf-fm-Sm2" secondAttribute="trailing" constant="49" id="f9W-zt-exH"/>
                             <constraint firstItem="fd1-yf-bsN" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="37" id="ggo-0v-Dch"/>
                             <constraint firstItem="JhO-pe-bMv" firstAttribute="top" secondItem="cKf-fm-Sm2" secondAttribute="bottom" constant="21" id="i8T-co-cNW"/>
                             <constraint firstItem="cKf-fm-Sm2" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="48" id="kyR-da-byf"/>
+                            <constraint firstItem="lbO-vg-pog" firstAttribute="top" secondItem="wWA-8Y-gH0" secondAttribute="bottom" constant="35" id="lhZ-pq-Du4"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="zgz-3I-7c8" secondAttribute="bottom" id="nES-Lw-II4"/>
                             <constraint firstItem="cKf-fm-Sm2" firstAttribute="top" secondItem="fd1-yf-bsN" secondAttribute="bottom" constant="30" id="pmH-58-wAa"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="cityEntered" destination="JhO-pe-bMv" id="Urh-vj-ip6"/>
+                        <outlet property="weatherOutput" destination="lbO-vg-pog" id="THO-id-VUS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-94" y="-18"/>
+            <point key="canvasLocation" x="-95.200000000000003" y="-18.440779610194905"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="background.jpeg" width="3264" height="2448"/>
+    </resources>
 </document>
