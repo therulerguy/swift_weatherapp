@@ -12,13 +12,55 @@ class ViewController: UIViewController, UITextFieldDelegate {
   
   @IBOutlet var cityEntered: UITextField!
   
+  @IBOutlet var weatherOutput: UILabel!
+  
   @IBAction func submit(_ sender: AnyObject) {
+    
+    //Convert entered text to NSString and make it one word
+    
+    if let cityObject = cityEntered.text {
+      
+      let city = NSString(string: String(cityObject))
+      
+      city.replacingOccurrences(of: " ", with: "")
+      
+    }
+    
+    //Grab and download data from URL
+    
+    if let url = URL(string: "https://weather-forecast.com") {
+      
+      let request = URLRequest(url: url)
+      
+      let task = URLSession.shared.dataTask(with: request) {
+        data, response, error in
+        
+        if error != nil {
+          
+          DispatchQueue.main.sync {
+          self.weatherOutput.text = "Error: Please enter a valid city"
+          }
+          
+        } else {
+          
+          if let unwrappedData = data {
+            
+            let dataString = NSString(data: unwrappedData, encoding: String.Encoding.utf8.rawValue)
+            
+            print(dataString)
+            
+          }
+          
+        }
+        
+        
+      }
+      task.resume()
+    }
+    
+    cityEntered.text = ""
   }
-  
-  
-  
-  
-  
+
 
   override func viewDidLoad() {
     super.viewDidLoad()
