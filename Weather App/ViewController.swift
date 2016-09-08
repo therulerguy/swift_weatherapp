@@ -11,8 +11,10 @@ import UIKit
 class ViewController: UIViewController, UITextFieldDelegate {
   
   @IBOutlet var cityEntered: UITextField!
-  
+
   @IBOutlet var weatherOutput: UILabel!
+  
+  var message = ""
   
   @IBAction func submit(_ sender: AnyObject) {
     
@@ -29,7 +31,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
 //    Grabbing the data from the webpage and displaying HTML to the console
     
-    let url = URL(string: "http://weather-forecast.com/locations/\(cityString)/forecasts/latest")!
+    if let url = URL(string: "http://weather-forecast.com/locations/\(cityString)/forecasts/latest") {
     
     let request = NSMutableURLRequest(url: url)
     
@@ -50,24 +52,42 @@ class ViewController: UIViewController, UITextFieldDelegate {
           
           if let contentArray = dataString?.components(separatedBy: stringSeperator) {
             
-            if contentArray.count > 0 {
+            if contentArray.count > 1 {
               
               stringSeperator = "</span>"
               
               let newContentArray = contentArray[1].components(separatedBy: stringSeperator)
               
+              if newContentArray.count > 1 {
+                
+                self.message = newContentArray[0]
+  
               DispatchQueue.main.sync(execute: {
                 
-                self.weatherOutput.text = newContentArray[0].replacingOccurrences(of: "&deg;", with: "º")
+                self.weatherOutput.text = newContentArray[0].replacingOccurrences(of: "&deg;", with: "˚")
 
               })
+              }
             }
           }
         }
       }
+      
+      if self.message == "" {
+        
+        self.weatherOutput.text = "The weather there couldn't be found. Please try again"
+        
+      }
+      
     }
     
     task.resume()
+      
+    } else {
+      
+      self.weatherOutput.text = "The weather there couldn't be found. Please try again"
+      
+    }
     cityEntered.text = ""
   }
 

@@ -42,15 +42,19 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wWA-8Y-gH0">
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="Submit"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mRs-GF-MeM">
+                                <frame key="frameInset" minX="158" minY="238" width="59" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Submit">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
-                                    <action selector="submit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nYw-rT-Sc9"/>
+                                    <action selector="submit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3E0-iO-9Nl"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lbO-vg-pog">
-                                <frame key="frameInset" minX="52" minY="277" width="271"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dOe-yD-UUp">
+                                <frame key="frameInset" minX="16" minY="316" width="343" height="122"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -59,16 +63,11 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="JhO-pe-bMv" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="06j-nw-C4f"/>
-                            <constraint firstItem="wWA-8Y-gH0" firstAttribute="top" secondItem="JhO-pe-bMv" secondAttribute="bottom" constant="16" id="1bY-1K-hAY"/>
                             <constraint firstAttribute="trailing" secondItem="zgz-3I-7c8" secondAttribute="trailing" id="Cgh-VW-J2M"/>
                             <constraint firstItem="zgz-3I-7c8" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="KnO-cL-1RA"/>
                             <constraint firstItem="fd1-yf-bsN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="19" id="O4U-0p-bSy"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="lbO-vg-pog" secondAttribute="trailing" constant="36" id="Ua2-wF-0Sr"/>
                             <constraint firstAttribute="trailingMargin" secondItem="fd1-yf-bsN" secondAttribute="trailing" constant="20" id="Uoq-7e-Vbk"/>
-                            <constraint firstItem="lbO-vg-pog" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="36" id="VLG-pS-thT"/>
                             <constraint firstItem="JhO-pe-bMv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="YBu-Wz-ilh"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="wWA-8Y-gH0" secondAttribute="trailing" constant="147" id="amL-CL-yKi"/>
-                            <constraint firstItem="wWA-8Y-gH0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="147" id="cq4-6C-0rf"/>
                             <constraint firstItem="zgz-3I-7c8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="eog-aV-WfC"/>
                             <constraint firstAttribute="trailingMargin" secondItem="cKf-fm-Sm2" secondAttribute="trailing" constant="49" id="f9W-zt-exH"/>
                             <constraint firstItem="fd1-yf-bsN" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="37" id="ggo-0v-Dch"/>
@@ -80,12 +79,12 @@
                     </view>
                     <connections>
                         <outlet property="cityEntered" destination="JhO-pe-bMv" id="Urh-vj-ip6"/>
-                        <outlet property="weatherOutput" destination="lbO-vg-pog" id="THO-id-VUS"/>
+                        <outlet property="weatherOutput" destination="dOe-yD-UUp" id="Pye-IX-d7c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-95.200000000000003" y="-18.440779610194905"/>
+            <point key="canvasLocation" x="-239.19999999999999" y="-58.020989505247378"/>
         </scene>
     </scenes>
     <resources>
