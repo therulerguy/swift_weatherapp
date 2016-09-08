@@ -73,11 +73,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
       }
       
+      DispatchQueue.main.sync(execute: {
+      
       if self.message == "" {
         
         self.weatherOutput.text = "The weather there couldn't be found. Please try again"
         
       }
+        })
       
     }
     
@@ -86,7 +89,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
     } else {
       
       self.weatherOutput.text = "The weather there couldn't be found. Please try again"
-      
     }
     cityEntered.text = ""
   }
