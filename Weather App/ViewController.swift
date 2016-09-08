@@ -16,7 +16,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
   
   @IBAction func submit(_ sender: AnyObject) {
     
-    //Convert entered text to NSString and make it one word
+//    Convert entered text to NSString and make it one word
+    
+    var cityString = ""
     
     if let cityObject = cityEntered.text {
       
@@ -24,15 +26,20 @@ class ViewController: UIViewController, UITextFieldDelegate {
       
       city.replacingOccurrences(of: " ", with: "")
       
+      cityString = city as String
+      
+      print(cityString)
+      
     }
     
-    //Grab and download data from URL
     
-    if let url = URL(string: "https://weather-forecast.com") {
+//    Grab and download data from URL
+    
+    if let url = URL(string: "http://www.weather-forecast.com/locations/\(cityString)") {
       
       let request = URLRequest(url: url)
       
-      let task = URLSession.shared.dataTask(with: request) {
+      let task = URLSession.shared.dataTask(with: request as URLRequest) {
         data, response, error in
         
         if error != nil {
@@ -52,12 +59,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
           }
           
         }
-        
-        
       }
       task.resume()
     }
-    
     cityEntered.text = ""
   }
 
