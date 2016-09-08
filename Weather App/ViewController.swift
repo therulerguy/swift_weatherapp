@@ -16,52 +16,45 @@ class ViewController: UIViewController, UITextFieldDelegate {
   
   @IBAction func submit(_ sender: AnyObject) {
     
-//    Convert entered text to NSString and make it one word
+    //Converting user entered text into one word
     
     var cityString = ""
     
     if let cityObject = cityEntered.text {
       
-      let city = NSString(string: String(cityObject))
+      let city = NSString(string: cityObject)
       
-      city.replacingOccurrences(of: " ", with: "")
-      
-      cityString = city as String
-      
-      print(cityString)
-      
+      cityString = city.replacingOccurrences(of: " ", with: "")
     }
     
+    //Grabbing the data from the webpage and displaying HTML to the console
     
-//    Grab and download data from URL
+    let url = URL(string: "http://weather-forecast.com")!
     
-    if let url = URL(string: "http://www.weather-forecast.com/locations/\(cityString)") {
+    let request = NSMutableURLRequest(url: url)
+    
+    let task = URLSession.shared.dataTask(with: request as URLRequest) {
+      data, response, error in
       
-      let request = URLRequest(url: url)
-      
-      let task = URLSession.shared.dataTask(with: request as URLRequest) {
-        data, response, error in
+      if error != nil {
         
-        if error != nil {
+        print(error)
+        
+      } else {
+        
+        if let unwrappedData = data {
           
-          DispatchQueue.main.sync {
-          self.weatherOutput.text = "Error: Please enter a valid city"
-          }
+          let dataString = NSString(data: unwrappedData, encoding: String.Encoding.utf8.rawValue)
           
-        } else {
-          
-          if let unwrappedData = data {
-            
-            let dataString = NSString(data: unwrappedData, encoding: String.Encoding.utf8.rawValue)
-            
-            print(dataString)
-            
-          }
+          print(dataString)
           
         }
+        
       }
-      task.resume()
+      
     }
+    
+    task.resume()
     cityEntered.text = ""
   }
 
