@@ -16,7 +16,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
   
   @IBAction func submit(_ sender: AnyObject) {
     
-    //Converting user entered text into one word
+//    Converting user entered text into one word
     
     var cityString = ""
     
@@ -27,9 +27,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
       cityString = city.replacingOccurrences(of: " ", with: "")
     }
     
-    //Grabbing the data from the webpage and displaying HTML to the console
+//    Grabbing the data from the webpage and displaying HTML to the console
     
-    let url = URL(string: "http://weather-forecast.com")!
+    let url = URL(string: "http://weather-forecast.com/locations/\(cityString)/forecasts/latest")!
     
     let request = NSMutableURLRequest(url: url)
     
@@ -38,7 +38,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
       
       if error != nil {
         
-        print(error)
+        self.weatherOutput.text = "Please enter a valid city"
         
       } else {
         
@@ -46,12 +46,25 @@ class ViewController: UIViewController, UITextFieldDelegate {
           
           let dataString = NSString(data: unwrappedData, encoding: String.Encoding.utf8.rawValue)
           
-          print(dataString)
+          var stringSeperator = "Weather Forecast Summary:</b><span class=\"read-more-small\"><span class=\"read-more-content\"> <span class=\"phrase\">"
           
+          if let contentArray = dataString?.components(separatedBy: stringSeperator) {
+            
+            if contentArray.count > 0 {
+              
+              stringSeperator = "</span>"
+              
+              let newContentArray = contentArray[1].components(separatedBy: stringSeperator)
+              
+              DispatchQueue.main.sync(execute: {
+                
+                self.weatherOutput.text = newContentArray[0].replacingOccurrences(of: "&deg;", with: "º")
+
+              })
+            }
+          }
         }
-        
       }
-      
     }
     
     task.resume()
@@ -62,7 +75,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
   }
-
+  
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
